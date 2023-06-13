@@ -7,6 +7,8 @@ menu "HMI Board Config"
             bool "BSP board esp32_s3_box"
         config BSP_BOARD_ESP32_S3_BOX_Lite
             bool "BSP board esp32_s3_box_lite [Not Supported]"
+        config BSP_BOARD_M5STACK_CORES3
+            bool "BSP board m5stack cores3"
     endchoice
    
 endmenu

@@ -6,7 +6,6 @@ dependencies:
   chmorgan/esp-file-iterator: "1.0.0"
   chmorgan/esp-libhelix-mp3: "1.0.3"
   
-  espressif/esp-box: "2.3.*"
   espressif/esp_rainmaker:
     path: components/esp_rainmaker
     git: https://github.com/espressif/esp-rainmaker.git

@@ -1,0 +1,13 @@
+dependencies:
+  esp_lcd_touch_ft5x06:
+    version: ^1
+  esp_lvgl_port:
+    public: true
+    version: ^1
+  idf:
+    version: '>=5.0'
+description: Board Support Package for ESP-BOX
+targets:
+- esp32s3
+url: https://github.com/espressif/esp-bsp/tree/master/esp-box
+version: 2.3.3

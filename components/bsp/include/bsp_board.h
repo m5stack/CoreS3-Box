@@ -21,6 +21,7 @@ extern "C" {
 typedef enum {
     BOARD_S3_BOX,
     BOARD_S3_BOX_LITE,
+    BOARD_M5STACK_CORES3,
 } boards_id_t;
 
 typedef enum {
@@ -30,6 +31,12 @@ typedef enum {
     BOARD_BTN_ID_HOME,
     BOARD_BTN_ID_NUM
 #elif CONFIG_BSP_BOARD_ESP32_S3_BOX_Lite
+    BOARD_BTN_ID_BOOT = 0,
+    BOARD_BTN_ID_PREV,
+    BOARD_BTN_ID_ENTER,
+    BOARD_BTN_ID_NEXT,
+    BOARD_BTN_ID_NUM
+#elif CONFIG_BSP_BOARD_M5STACK_CORES3
     BOARD_BTN_ID_BOOT = 0,
     BOARD_BTN_ID_PREV,
     BOARD_BTN_ID_ENTER,

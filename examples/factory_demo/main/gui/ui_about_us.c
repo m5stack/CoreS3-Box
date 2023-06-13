@@ -30,7 +30,9 @@ static void ui_about_us_page_return_click_cb(lv_event_t *e)
     bsp_btn_rm_all_callback(BOARD_BTN_ID_HOME);
 #endif
     lv_obj_del(obj);
+#if CONFIG_BSP_BOARD_ESP32_S3_BOX || CONFIG_ESP32_S3_BOX_LITE_BOARD
     bsp_btn_rm_all_callback(BOARD_BTN_ID_BOOT);
+#endif
     if (g_about_us_end_cb) {
         g_about_us_end_cb();
     }
@@ -58,7 +60,9 @@ static void btn_factory_cb(void *handle, void *arg)
         lv_group_remove_all_objs(ui_get_btn_op_group());
     }
     lv_obj_del(obj);
+#if CONFIG_BSP_BOARD_ESP32_S3_BOX || CONFIG_ESP32_S3_BOX_LITE_BOARD
     bsp_btn_rm_all_callback(BOARD_BTN_ID_BOOT);
+#endif
     ui_factory_start(factory_end_cb);
     ui_release();
 
@@ -125,5 +129,7 @@ void ui_about_us_start(void (*fn)(void))
     lv_label_set_text(lab, msg);
     lv_obj_align(lab, LV_ALIGN_BOTTOM_LEFT, 0, -10);
 
+#if CONFIG_BSP_BOARD_ESP32_S3_BOX || CONFIG_ESP32_S3_BOX_LITE_BOARD
     bsp_btn_register_callback(BOARD_BTN_ID_BOOT, BUTTON_SINGLE_CLICK, btn_factory_cb, (void *)page);
+#endif
 }

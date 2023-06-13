@@ -83,3 +83,5 @@ dependencies.lock
 
 # managed_components for examples
 managed_components
+
+.component_hash

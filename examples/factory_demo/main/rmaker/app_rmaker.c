@@ -205,8 +205,9 @@ static void wifi_credential_reset(void *handle, void *arg)
 
 void app_rmaker_start(void)
 {
+#if CONFIG_BSP_BOARD_ESP32_S3_BOX || CONFIG_ESP32_S3_BOX_LITE_BOARD
     bsp_btn_register_callback(BOARD_BTN_ID_BOOT, BUTTON_LONG_PRESS_START, wifi_credential_reset, NULL);
-
+#endif
     BaseType_t ret_val = xTaskCreatePinnedToCore(rmaker_task, "RMaker Task", 6 * 1024, NULL, 1, NULL, 0);
     ESP_ERROR_CHECK_WITHOUT_ABORT((pdPASS == ret_val) ? ESP_OK : ESP_FAIL);
 }

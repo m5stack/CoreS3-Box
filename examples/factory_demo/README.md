@@ -4,6 +4,7 @@
 | ----------------- | -------------- |
 | ESP32-S3-BOX      | YES            |
 | ESP32-S3-BOX-Lite | YES            |
+| M5Stack-CoreS3    | YES            |
 
 The factory_demo is a built-in firmware of ESP-BOX series products, which integrates LVGL, ESP-Rainmaker and ESP-SR.
 
@@ -13,7 +14,7 @@ Please check the [User-Guide](../../docs/getting_started.md).
 
 ### Hardware Required
 
-* A ESP32-S3-Box or ESP32-S3-BOX-Lite
+* A ESP32-S3-Box or ESP32-S3-BOX-Lite or M5Stack-CoreS3
 * An USB-C cable for power supply and programming
 
 ### Build and Flash

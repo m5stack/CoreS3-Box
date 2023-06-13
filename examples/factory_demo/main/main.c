@@ -104,8 +104,8 @@ void app_main(void)
     bsp_spiffs_mount();
 
     bsp_i2c_init();
-    bsp_display_start();
     bsp_board_init();
+    bsp_display_start();
 
     ESP_LOGI(TAG, "Display LVGL demo");
     bsp_display_backlight_on();
