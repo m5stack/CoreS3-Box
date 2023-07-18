@@ -126,6 +126,15 @@ void ui_hint_start(void (*fn)(void))
     img = lv_img_create(hint_page);
     lv_img_set_src(img, &hand_down);
     lv_obj_align_to(img, lab_hint, LV_ALIGN_BOTTOM_MID, 0, 60);
+#elif CONFIG_BSP_BOARD_M5STACK_CORES3
+    // For S3 BOX
+    lab_hint = lv_label_create(hint_page);
+    lv_label_set_text_static(lab_hint, "Touch to return");
+    lv_obj_set_style_text_align(lab_hint, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN);
+    lv_obj_align(lab_hint, LV_ALIGN_CENTER, 0, -10);
+    img = lv_img_create(hint_page);
+    lv_img_set_src(img, &hand_down);
+    lv_obj_align_to(img, lab_hint, LV_ALIGN_BOTTOM_MID, 0, 60);
 #endif
 
     lv_obj_t *lab_index = lv_label_create(hint_page);
