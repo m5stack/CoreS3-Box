@@ -187,12 +187,30 @@ static uint16_t bus_i2c_read_16(uint8_t slv_addr, uint8_t reg)
 }
 
 static esp_err_t bsp_codec_volume_set(int volume, int *volume_set)
-{
+{   
+    esp_err_t ret = ESP_OK;
+    int v = 10 - volume / 10;
+    if ( v == 10)
+    {
+        bus_bus_i2c_write_16(0x36, 0x0C, 0xFF64);
+        bus_bus_i2c_write_16(0x36, 0x05, 0x0018);
+        ESP_LOGI(TAG, "%d", v);
+        ESP_LOGI(TAG, "%X", 0xFF64);
+    }
+    else
+    {
+        bus_bus_i2c_write_16(0x36, 0x05, 0x0008);
+        bus_bus_i2c_write_16(0x36, 0x0C, v * 11 * 256 + 100);
+        ESP_LOGI(TAG, "%d", v);
+        ESP_LOGI(TAG, "%X", v * 11 * 256 + 100);
+    }
     return ESP_OK;
 }
 
 static esp_err_t bsp_codec_mute_set(bool enable)
 {
+    bus_bus_i2c_write_16(0x36, 0x0C, 0xFF64);
+    bus_bus_i2c_write_16(0x36, 0x05, 0x0018);
     return ESP_OK;
 }
 
