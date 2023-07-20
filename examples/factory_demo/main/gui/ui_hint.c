@@ -28,7 +28,7 @@ static void hint_page_btn_prev_cb(void *arg, void *data)
     uint16_t tab_index = lv_tabview_get_tab_act(obj);
     if (tab_index > 0) {
         tab_index --;
-        ESP_LOGI(TAG, "hint previous");
+        ESP_LOGV(TAG, "hint previous");
         lv_tabview_set_act(obj, tab_index, LV_ANIM_ON);
         if (ui_get_btn_op_group()) {
             lv_group_remove_all_objs(ui_get_btn_op_group());
@@ -44,7 +44,7 @@ static void hint_page_btn_next_cb(void *arg, void *data)
     uint16_t tab_index = lv_tabview_get_tab_act(obj);
     if (tab_index < HINT_PAGE_NUM - 1) {
         tab_index ++;
-        ESP_LOGI(TAG, "hint next");
+        ESP_LOGV(TAG, "hint next");
         lv_tabview_set_act(obj, tab_index, LV_ANIM_ON);
         if (ui_get_btn_op_group()) {
             lv_group_remove_all_objs(ui_get_btn_op_group());
@@ -129,12 +129,12 @@ void ui_hint_start(void (*fn)(void))
 #elif CONFIG_BSP_BOARD_M5STACK_CORES3
     // For S3 BOX
     lab_hint = lv_label_create(hint_page);
-    lv_label_set_text_static(lab_hint, "Touch to return");
+    lv_label_set_text_static(lab_hint, "Touch for next page");
     lv_obj_set_style_text_align(lab_hint, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN);
     lv_obj_align(lab_hint, LV_ALIGN_CENTER, 0, -10);
     img = lv_img_create(hint_page);
     lv_img_set_src(img, &hand_down);
-    lv_obj_align_to(img, lab_hint, LV_ALIGN_BOTTOM_MID, 0, 60);
+    lv_obj_align_to(img, lab_hint, LV_ALIGN_BOTTOM_RIGHT, 50, 60);
 #endif
 
     lv_obj_t *lab_index = lv_label_create(hint_page);
@@ -169,19 +169,19 @@ void ui_hint_start(void (*fn)(void))
     lv_obj_align(img, LV_ALIGN_TOP_LEFT, 0, 0);
     lv_obj_t *lab_btn_name = lv_label_create(hint_page);
     lv_label_set_recolor(lab_btn_name, true);
-    lv_label_set_text_static(lab_btn_name, "#000000 Function Button#");
+    lv_label_set_text_static(lab_btn_name, "#000000 Power Button#");
     lv_obj_align_to(lab_btn_name, img, LV_ALIGN_OUT_RIGHT_MID, 10, 0);
     lab_hint = lv_label_create(hint_page);
-    lv_label_set_text_static(lab_hint, "Customized by user");
+    lv_label_set_text_static(lab_hint, "Long press to\npower on/off");
     lv_obj_align_to(lab_hint, lab_btn_name, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 0);
 
     img = lv_img_create(hint_page);
-    lv_img_set_src(img, &hand_left);
-    lv_obj_align(img, LV_ALIGN_BOTTOM_LEFT, 0, 0);
+    lv_img_set_src(img, &hand_down);
+    lv_obj_align(img, LV_ALIGN_BOTTOM_MID, 105, -50);
     lab_btn_name = lv_label_create(hint_page);
     lv_label_set_recolor(lab_btn_name, true);
     lv_label_set_text_static(lab_btn_name, "#000000 Reset Button#");
-    lv_obj_align_to(lab_btn_name, img, LV_ALIGN_OUT_RIGHT_MID, 10, -40);
+    lv_obj_align_to(lab_btn_name, img, LV_ALIGN_OUT_RIGHT_MID, -135, -20);
     lab_hint = lv_label_create(hint_page);
     lv_label_set_text_static(lab_hint, "Press to reset\nthe device");
     lv_obj_align_to(lab_hint, lab_btn_name, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 0);
